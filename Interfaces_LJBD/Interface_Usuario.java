@@ -4,6 +4,7 @@ package Interfaces_LJBD;
 
 import DAO_LJBD.DAO_Usuario;
 import Modelo_LJBD.Modelo_Usuario;
+import javax.swing.JOptionPane;
 /**
  *
  * @author eeuar
@@ -16,7 +17,15 @@ public class Interface_Usuario extends javax.swing.JFrame {
     public Interface_Usuario() {
         initComponents();
     }
-
+     public Interface_Usuario(Modelo_Usuario paraU) {
+        initComponents();
+        jText_nomeU.setText(paraU.getNomeU());
+        jText_nicknameU.setText(paraU.getNicknameU());
+        jText_nidentU.setText(paraU.getNidentificacaoCPFU());
+        jText_naciU.setText(paraU.getNacionalidadeU());
+        jText_emailU.setText(paraU.getEmailU());
+        jText_dataU.setText(paraU.getDatanascU());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,7 +101,7 @@ public class Interface_Usuario extends javax.swing.JFrame {
         jLabel6.setText("Email:");
 
         jButtonCCU.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButtonCCU.setText("Criar Conta");
+        jButtonCCU.setText("Criar Conta/Atualizar");
         jButtonCCU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCCUActionPerformed(evt);
@@ -114,10 +123,20 @@ public class Interface_Usuario extends javax.swing.JFrame {
         });
 
         jButtonAtuU.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButtonAtuU.setText("Atualizar");
+        jButtonAtuU.setText("Listar");
+        jButtonAtuU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtuUActionPerformed(evt);
+            }
+        });
 
         jButtonBU.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonBU.setText("Buscar");
+        jButtonBU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBUActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -154,9 +173,9 @@ public class Interface_Usuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButtonBU)
+                                .addComponent(jButtonBU, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonAtuU))
+                                .addComponent(jButtonAtuU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jButtonCCU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 23, Short.MAX_VALUE))
         );
@@ -215,7 +234,7 @@ public class Interface_Usuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -234,13 +253,25 @@ public class Interface_Usuario extends javax.swing.JFrame {
         Modelo_Usuario InserirUsuario = new Modelo_Usuario();
         InserirUsuario.setNomeU(jText_nomeU.getText());
         InserirUsuario.setNicknameU(jText_nicknameU.getText());
-        InserirUsuario.setNidentificacaoCPFU(jText_nidentU.getText());
         InserirUsuario.setNacionalidadeU(jText_naciU.getText());
         InserirUsuario.setEmailU(jText_emailU.getText());
         InserirUsuario.setDatanascU(jText_dataU.getText());
-        
+        InserirUsuario.setNidentificacaoCPFU(jText_nidentU.getText());
+         
         DAO_Usuario UDAO = new DAO_Usuario();
-        UDAO.InserirUsuario(InserirUsuario);
+        if (UDAO.ConsultaUS(String.valueOf(InserirUsuario.getNidentificacaoCPFU())) == null){
+            if(UDAO.InserirUsuario(InserirUsuario)){
+                 JOptionPane.showMessageDialog(null, "A conta do usuário " + InserirUsuario.getNomeU() + " foi criada com sucesso.");
+        }else{
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado ao criar a conta do usuário: " + InserirUsuario.getNomeU());
+                }
+        }else{  
+           if(UDAO.ATUU(InserirUsuario)){
+                 JOptionPane.showMessageDialog(null, "A conta do usuário " + InserirUsuario.getNomeU() + " foi atualizada com sucesso.");
+        }else{
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado ao atualizar a conta do usuário: " + InserirUsuario.getNomeU());
+                } 
+        }
         
       
     }//GEN-LAST:event_jButtonCCUActionPerformed
@@ -249,6 +280,16 @@ public class Interface_Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonVUActionPerformed
+
+    private void jButtonBUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBUActionPerformed
+        Interface_ConsultaU UsuarioC = new Interface_ConsultaU();
+        UsuarioC.setVisible(true);
+    }//GEN-LAST:event_jButtonBUActionPerformed
+
+    private void jButtonAtuUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtuUActionPerformed
+       Interface_ListagemU UsuarioLA = new Interface_ListagemU();
+        UsuarioLA.setVisible(true);
+    }//GEN-LAST:event_jButtonAtuUActionPerformed
 
     /**
      * @param args the command line arguments

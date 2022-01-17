@@ -90,6 +90,11 @@ public class Modelo_Jogo {
     public void setReqJ(String reqJ) {
         this.reqJ = reqJ;
     }
+
+    @Override
+    public String toString() {
+        return "| " + nomeJ + " - " + precoJ + " - " + datalancJ + " - " + faixaeJ + " |";
+    }
     
     
 }

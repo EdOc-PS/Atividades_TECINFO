@@ -16,7 +16,18 @@ public class Interface_Jogo extends javax.swing.JFrame {
     public Interface_Jogo() {
         initComponents();
     }
-
+    public Interface_Jogo(Modelo_Jogo paraJ) {
+         initComponents();
+         jTextNomeJ.setText(paraJ.getNomeJ());
+         jTextDataJ.setText(paraJ.getDatalancJ());
+         jTextFaixaeJ.setText(String.valueOf(paraJ.getFaixaeJ()));
+         jTextGeneroJ.setText(paraJ.getGeneroJ());
+         jTextIdiomasJ.setText(paraJ.getIdiomasJ());
+         jTextRequisitosJ.setText(paraJ.getReqJ());
+         jTextPrecoJ.setText(String.valueOf(paraJ.getPrecoJ()));
+         
+         
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -122,6 +133,11 @@ public class Interface_Jogo extends javax.swing.JFrame {
 
         jButtonBJ.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonBJ.setText("Buscar");
+        jButtonBJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBJActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -225,7 +241,7 @@ public class Interface_Jogo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30))
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -260,6 +276,11 @@ public class Interface_Jogo extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonVJActionPerformed
+
+    private void jButtonBJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBJActionPerformed
+        Interface_ConsultaJ JogoC = new Interface_ConsultaJ();
+        JogoC.setVisible(true);
+    }//GEN-LAST:event_jButtonBJActionPerformed
 
     /**
      * @param args the command line arguments

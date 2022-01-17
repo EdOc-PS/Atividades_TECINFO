@@ -6,6 +6,7 @@ package Interfaces_LJBD;
 
 import DAO_LJBD.DAO_Distribuidora;
 import Modelo_LJBD.Modelo_Distribuidora;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +20,12 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
     public Interface_Distribuidora() {
         initComponents();
     }
-
+    public Interface_Distribuidora(Modelo_Distribuidora paraD) {
+        initComponents();
+        jTextNomeD.setText(paraD.getNomeD());
+        jTextDataID.setText(paraD.getDataiD());
+        jTextEmailD.setText(paraD.getEmailD());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,8 +48,9 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButtonVD = new javax.swing.JButton();
-        jButtonAtuP = new javax.swing.JButton();
         jButtonBD = new javax.swing.JButton();
+        jButtonAtuU = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jButtonAtu1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonAtu1.setText("Atualizar");
@@ -74,7 +81,7 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
         jLabel6.setText("Email:");
 
         jButtonCCD.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButtonCCD.setText("Criar Conta");
+        jButtonCCD.setText("Criar Conta/Atualizar");
         jButtonCCD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCCDActionPerformed(evt);
@@ -95,11 +102,23 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
             }
         });
 
-        jButtonAtuP.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButtonAtuP.setText("Atualizar");
-
         jButtonBD.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonBD.setText("Buscar");
+        jButtonBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBDActionPerformed(evt);
+            }
+        });
+
+        jButtonAtuU.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jButtonAtuU.setText("Listar");
+        jButtonAtuU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtuUActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Deletar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -112,21 +131,21 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel9)
                         .addComponent(jTextDataID, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jButtonVD)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jButtonBD)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButtonAtuP))
-                                .addComponent(jButtonCCD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jTextNomeD, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextEmailD, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextNomeD, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextEmailD, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonVD, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButtonBD, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonAtuU, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButtonCCD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -142,22 +161,22 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextDataID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextEmailD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jButtonCCD)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonAtuP)
-                            .addComponent(jButtonVD)
-                            .addComponent(jButtonBD)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextEmailD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCCD)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonBD)
+                    .addComponent(jButtonAtuU))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVD)
+                    .addComponent(jButton1))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -215,13 +234,36 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
         InserirDistribuidora.setEmailD(jTextEmailD.getText());
         
         DAO_Distribuidora DDAO = new DAO_Distribuidora();
-        DDAO.InserirDistribuidora(InserirDistribuidora);
+        
+        if(DDAO.ConsultaDI(String.valueOf(InserirDistribuidora.getCodigoD())) == null){
+         if(DDAO.InserirDistribuidora(InserirDistribuidora)){
+             JOptionPane.showMessageDialog(null, "A conta do usuário " + InserirDistribuidora.getNomeD() + " foi criada com sucesso.");
+         }else{
+              JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado ao criar a conta da distribuidora: " + InserirDistribuidora.getNomeD());
+         }  
+        }else{  
+           if(DDAO.ATUD(InserirDistribuidora)){
+                 JOptionPane.showMessageDialog(null, "A conta da distribuidora " + InserirDistribuidora.getNomeD() + " foi atualizada com sucesso.");
+        }else{
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado ao atualizar a conta da distribuidora: " + InserirDistribuidora.getNomeD());
+                } 
+        }        
     }//GEN-LAST:event_jButtonCCDActionPerformed
 
     private void jButtonVDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVDActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonVDActionPerformed
+
+    private void jButtonBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBDActionPerformed
+      Interface_ConsultaD DistribuidoraC = new Interface_ConsultaD();
+       DistribuidoraC.setVisible(true);
+    }//GEN-LAST:event_jButtonBDActionPerformed
+
+    private void jButtonAtuUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtuUActionPerformed
+        Interface_ListagemD DistribuidoraLA = new Interface_ListagemD();
+        DistribuidoraLA.setVisible(true);
+    }//GEN-LAST:event_jButtonAtuUActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,8 +302,9 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAtu1;
-    private javax.swing.JButton jButtonAtuP;
+    private javax.swing.JButton jButtonAtuU;
     private javax.swing.JButton jButtonBD;
     private javax.swing.JButton jButtonCCD;
     private javax.swing.JButton jButtonVD;

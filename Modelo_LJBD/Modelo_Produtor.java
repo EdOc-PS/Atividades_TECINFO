@@ -13,20 +13,29 @@ public class Modelo_Produtor {
     private String dataiPE;
     private String emailPE;
     private String naciPE; 
-
+    private int CodigoPE;
     
-    public Modelo_Produtor(String nomePE, String dataiPE, String emailPE, String naciPE) {
+    public Modelo_Produtor(String nomePE, String dataiPE, String emailPE, String naciPE, int CodigoPE) {
         this.nomePE = nomePE;
         this.dataiPE = dataiPE;
         this.emailPE = emailPE;
         this.naciPE = naciPE;
-        
+        this.CodigoPE = CodigoPE;
     }
     public Modelo_Produtor() {
         this.nomePE = "";
         this.dataiPE = "";
         this.emailPE = "";
         this.naciPE = "";
+        this.CodigoPE = 0;
+    }
+
+    public int getCodigoPE() {
+        return CodigoPE;
+    }
+
+    public void setCodigoPE(int CodigoP) {
+        this.CodigoPE = CodigoP;
     }
 
     public String getNomePE() {
@@ -61,8 +70,11 @@ public class Modelo_Produtor {
         this.naciPE = naciPE;
     }
 
-  
+    @Override
+    public String toString() {
+        return "| " + nomePE + " - " + emailPE + " - " + naciPE + " - " + CodigoPE + " |";
+    }
     
-  
+ 
             
 }

@@ -81,5 +81,9 @@ public class Modelo_Usuario {
     public void setNacionalidadeU(String nacionalidadeU) {
         this.nacionalidadeU = nacionalidadeU;
     }
-   
+   @Override
+   public String toString(){
+       return "| " + nidentificacaoCPFU + " - " + nomeU + " - " + nicknameU + " - " + emailU + " - " + datanascU + " |";
+                    
+    }
 }

@@ -19,7 +19,13 @@ public class Interface_Produtor extends javax.swing.JFrame {
     public Interface_Produtor() {
         initComponents();
     }
-
+     public Interface_Produtor(Modelo_Produtor paraP) {
+        initComponents();
+        jTextNomePE.setText(paraP.getNomePE());
+        jTextNaciPE.setText(paraP.getNaciPE());
+        jTextDataIPE.setText(paraP.getDataiPE());
+        jTextEmailPE.setText(paraP.getEmailPE());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,6 +125,11 @@ public class Interface_Produtor extends javax.swing.JFrame {
 
         jButtonB.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonB.setText("Buscar");
+        jButtonB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBActionPerformed(evt);
+            }
+        });
 
         jButtonAtu1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonAtu1.setText("Atualizar");
@@ -243,6 +254,11 @@ public class Interface_Produtor extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonVPActionPerformed
+
+    private void jButtonBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBActionPerformed
+        Interface_ConsultaP ProdutorC = new Interface_ConsultaP();
+        ProdutorC.setVisible(true);
+    }//GEN-LAST:event_jButtonBActionPerformed
 
     /**
      * @param args the command line arguments
