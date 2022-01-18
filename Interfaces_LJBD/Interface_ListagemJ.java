@@ -36,6 +36,7 @@ public class Interface_ListagemJ extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jLista = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
+        jButtonVD1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +65,19 @@ public class Interface_ListagemJ extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Selecione o Jogo");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
+            }
+        });
+
+        jButtonVD1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jButtonVD1.setText("Voltar");
+        jButtonVD1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVD1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,15 +86,16 @@ public class Interface_ListagemJ extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jButtonAJ, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabel7)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonVD1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAJ, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +106,9 @@ public class Interface_ListagemJ extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAJ)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonVD1)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -99,16 +116,16 @@ public class Interface_ListagemJ extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(35, 35, 35)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,8 +137,8 @@ public class Interface_ListagemJ extends javax.swing.JFrame {
 
         DefaultListModel LMP1 = new DefaultListModel();
 
-        for(Modelo_Jogo MUD : Consul){
-            LMP1.addElement(MUD);
+        for(Modelo_Jogo MUJ : Consul){
+            LMP1.addElement(MUJ);
         }
         jLista.setModel(LMP1);
     }//GEN-LAST:event_jButtonAJActionPerformed
@@ -136,6 +153,14 @@ public class Interface_ListagemJ extends javax.swing.JFrame {
             TCD.setVisible(true);
         }
     }//GEN-LAST:event_jListaMouseClicked
+
+    private void jButtonVD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVD1ActionPerformed
+      this.dispose();
+    }//GEN-LAST:event_jButtonVD1ActionPerformed
+
+    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
+        jLabel7.setToolTipText("De 2 cliques em um jogo para atualiza-lo");
+    }//GEN-LAST:event_jLabel7MouseEntered
 
     /**
      * @param args the command line arguments
@@ -174,6 +199,7 @@ public class Interface_ListagemJ extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAJ;
+    private javax.swing.JButton jButtonVD1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JList<String> jLista;
     private javax.swing.JPanel jPanel1;

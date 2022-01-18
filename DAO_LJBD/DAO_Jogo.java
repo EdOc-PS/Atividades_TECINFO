@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 
 public class DAO_Jogo {
-    public void InserirJogo (Modelo_Jogo JBD){
+    public boolean InserirJogo (Modelo_Jogo JBD){
         try {
             String SQL = "INSERT INTO eduardo_octavio.jogo(nome_jogo, preco_jogo, temagenero_jogo,"
                     + " idioma_jogo, faixaeta_jogo, requisitos_jogo, datalanc_jogo) VALUES (?,?,?,?,?,?,?)";
@@ -35,19 +35,18 @@ public class DAO_Jogo {
                   
              int retornar = comando.executeUpdate();
                 if (retornar > 0){
-                    JOptionPane.showMessageDialog(null, "O jogo " + JBD.getNomeJ() + " foi adicionado com sucesso.");
+                   return true;
                 }
-                else{
-                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado ao adicionar o jogo " + JBD.getNomeJ());
-                }
+                
                 
         } catch (SQLException ex) {
             Logger.getLogger(DAO_Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
     public List<Modelo_Jogo> LUC(){
         try {
-            String SQL = "SELECT nome_jogo, requisitos_jogo, preco_jogo, temagenero_jogo, idioma_jogo, faixaeta_jogo, datalanc_jogo  FROM eduardo_octavio.jogo";
+            String SQL = "SELECT nome_jogo, requisitos_jogo, preco_jogo, temagenero_jogo, idioma_jogo, faixaeta_jogo, datalanc_jogo, codigo_jogo FROM eduardo_octavio.jogo";
             List<Modelo_Jogo> ListaJ = new ArrayList<Modelo_Jogo>();
             Connection ConexaoLJBD = ConexaoBD.getConexao();
             PreparedStatement PS = ConexaoLJBD.prepareStatement(SQL);
@@ -60,7 +59,7 @@ public class DAO_Jogo {
             }
             return ListaJ;
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO_Jogo.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -74,6 +73,7 @@ public class DAO_Jogo {
             MUJ.setIdiomasJ(Resul.getString("idioma_jogo"));
             MUJ.setFaixaeJ(Resul.getInt("faixaeta_jogo"));
             MUJ.setDatalancJ(Resul.getString("datalanc_jogo"));
+            MUJ.setCodJ(Resul.getInt("codigo_jogo"));
                    
             return MUJ;
         } catch (SQLException ex) {
@@ -81,10 +81,28 @@ public class DAO_Jogo {
         }
         return null;
     }
-    
+    public Modelo_Jogo ConsultaJO(String codigo_jogo){
+        try {
+            String SQL = "SELECT codigo_jogo, nome_jogo, requisitos_jogo, preco_jogo, temagenero_jogo, idioma_jogo, faixaeta_jogo, datalanc_jogo FROM eduardo_octavio.jogo WHERE codigo_jogo = ?";
+            Connection ConexaoLJBD = ConexaoBD.getConexao();
+            PreparedStatement PS = ConexaoLJBD.prepareStatement(SQL);
+            PS.setInt(1, Integer.valueOf(codigo_jogo));
+            ResultSet Resul = PS.executeQuery();
+            
+            if(Resul.next()){
+               Modelo_Jogo MUJ = new Modelo_Jogo();
+                MUJ = this.PeAJ(Resul);
+                return MUJ;
+            }
+            return null;
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Jogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     public Modelo_Jogo ConsultaJ(Modelo_Jogo JDados){
         try {
-            String SQL = "SELECT  nome_jogo,  temagenero_jogo, preco_jogo, idioma_jogo, requisitos_jogo, faixaeta_jogo, datalanc_jogo FROM eduardo_octavio.jogo";
+            String SQL = "SELECT * FROM eduardo_octavio.jogo";
             Connection ConexaoLJBD = ConexaoBD.getConexao();
             String Filtro ="";
             
@@ -138,9 +156,8 @@ public class DAO_Jogo {
                 }
                 else{
                 Filtro = " WHERE temagenero_jogo = '%" + JDados.getGeneroJ()+"&'";
-                }
-            }
-              
+                }               
+            }   
             PreparedStatement PS = ConexaoLJBD.prepareStatement(SQL + Filtro);         
             ResultSet Resul = PS.executeQuery();
             
@@ -154,5 +171,31 @@ public class DAO_Jogo {
             Logger.getLogger(DAO_Jogo.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    public boolean ATUJ(Modelo_Jogo DadosJO){
+        try {
+            String SQL = "UPDATE eduardo_octavio.jogo SET nome_jogo = ?, requisitos_jogo = ?, preco_jogo = ?, temagenero_jogo = ?, idioma_jogo = ?, faixaeta_jogo = ?, datalanc_jogo = ?  WHERE codigo_jogo = ?";
+            Connection ConexaoLJBD = ConexaoBD.getConexao();
+              PreparedStatement comando = ConexaoLJBD.prepareStatement(SQL);
+             
+             comando.setString(1, DadosJO.getNomeJ());
+              comando.setString(2, DadosJO.getReqJ());
+               comando.setDouble(3, DadosJO.getPrecoJ());
+                comando.setString(4, DadosJO.getGeneroJ());                
+                  comando.setString(5, DadosJO.getIdiomasJ());
+                   comando.setInt(6, DadosJO.getFaixaeJ());
+                    comando.setString(7, DadosJO.getDatalancJ());
+                     comando.setInt(8, DadosJO.getCodJ());
+                     
+             int retornar = comando.executeUpdate();
+         if (retornar > 0){
+                   return true;
+                }
+                
+                
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Jogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

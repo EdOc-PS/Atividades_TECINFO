@@ -4,8 +4,14 @@
  */
 package Interfaces_LJBD;
 
+import Conexao_LJBD.ConexaoBD;
 import DAO_LJBD.DAO_Jogo;
 import Modelo_LJBD.Modelo_Jogo;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -31,6 +37,9 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCodigoPE = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -53,6 +62,21 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButtonVD = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jCodigoJ = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+
+        jCodigoPE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCodigoPEActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel11.setText("Codigo:");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel12.setText("Codigo:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +96,8 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel2.setText("Preço");
+
+        jTextPrecoJ = DTCeT(60, " 0123456789.,");
 
         jTextDataJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,11 +141,22 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel13.setText("Codigo:");
+
+        jButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jButton2.setText("Deletar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -138,10 +175,6 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButtonVD)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -161,11 +194,19 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
                                                         .addComponent(jTextGeneroJ, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addGap(0, 0, Short.MAX_VALUE))))
                                         .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel8)
                                         .addComponent(jScrollPane1)
-                                        .addComponent(jTextNomeJ))
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                                        .addComponent(jTextNomeJ)
+                                        .addComponent(jLabel13)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jCodigoJ, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButtonVD)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)))))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,15 +241,21 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCodigoJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jLabel8)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButtonVD))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,24 +269,23 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public JTextField DTCeT(int Tam, String cara){
+     public JTextField DTCeT(int Tam, String cara){
         try{
             String QT = "";
                 for (int i = 0; i < Tam; i++){
                     QT = QT + "*";
                 }
-         javax.swing.text.MaskFormatter nome = new javax.swing.text.MaskFormatter(QT);
-            nome.setValidCharacters(cara);
-                return new javax.swing.JFormattedTextField(nome);                            
+         javax.swing.text.MaskFormatter Area = new javax.swing.text.MaskFormatter(QT);
+            Area.setValidCharacters(cara);
+                return new javax.swing.JFormattedTextField(Area);                            
         } 
     
         catch (Exception e){
@@ -247,6 +293,8 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
                     return new  JTextField();
         }
     }
+   
+    
     private void jTextNomeJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeJActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNomeJActionPerformed
@@ -277,7 +325,11 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
         else{
             CJogo.setFaixaeJ(Integer.valueOf(jTextFaixaeJ.getText()));
         }
-        
+        if(jCodigoJ.getText().trim().equalsIgnoreCase("")){
+         CJogo.setCodJ(0);
+        }else{
+        CJogo.setCodJ(Integer.valueOf(jCodigoJ.getText()));
+        }
         CJogo.setGeneroJ(jTextGeneroJ.getText());
 
         DAO_Jogo JDAO = new DAO_Jogo();
@@ -291,13 +343,37 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
             jTextGeneroJ.setText(retornar.getGeneroJ());
             jTextRequisitosJ.setText(retornar.getReqJ());
             jTextPrecoJ.setText(String.valueOf(retornar.getPrecoJ()));
-            jTextIdiomasJ.setText(retornar.getIdiomasJ());
+            jTextIdiomasJ.setText(retornar.getIdiomasJ()); 
+            jCodigoJ.setText(String.valueOf(retornar.getCodJ()));
            
         }
         else{
             jLabel10.setText("JOGO NÃO ENCORNTRADO!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCodigoPEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCodigoPEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCodigoPEActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            String SQL = "DELETE FROM eduardo_octavio.jogo WHERE codigo_jogo = '" + jCodigoJ.getText() + "'";
+            Connection ConexaoLJBD = ConexaoBD.getConexao();
+            PreparedStatement comando = ConexaoLJBD.prepareStatement(SQL);
+
+            int retornar = comando.executeUpdate();
+            if (retornar < 0){
+                JOptionPane.showMessageDialog(null, "O correu um erro ao deletar o jogo do sistema");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "O jogo foi apagado com suscesso do sistema");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Jogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,9 +412,15 @@ public class Interface_ConsultaJ extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonVD;
+    public javax.swing.JTextField jCodigoJ;
+    public javax.swing.JTextField jCodigoPE;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

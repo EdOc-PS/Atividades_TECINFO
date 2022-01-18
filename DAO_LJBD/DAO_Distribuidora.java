@@ -77,7 +77,7 @@ public class DAO_Distribuidora {
     
     public Modelo_Distribuidora ConsultaD(Modelo_Distribuidora DDados){
         try {
-            String SQL = "SELECT nome_distribuidora, datainclu_distribuidora, email_distribuidora, codigo_distribuidora FROM eduardo_octavio.distribuidora";
+            String SQL = "SELECT * FROM eduardo_octavio.distribuidora";
             Connection ConexaoLJBD = ConexaoBD.getConexao();
             String Filtro ="";
             
@@ -86,7 +86,7 @@ public class DAO_Distribuidora {
                     Filtro += " AND nome_distribuidora ilike '%"+DDados.getNomeD()+"%'";
                 }
                 else{
-                Filtro = " WHERE nome_distribuidora ilike'%" + DDados.getNomeD() +"%'";
+                Filtro = " WHERE nome_distribuidora ilike '%" + DDados.getNomeD() +"%'";
                 }
             }
             
@@ -106,6 +106,9 @@ public class DAO_Distribuidora {
                 Filtro = " WHERE email_distribuidora ilike '%" + DDados.getEmailD()+"%'";
                 }
             }
+              
+                
+             
             PreparedStatement PS = ConexaoLJBD.prepareStatement(SQL + Filtro);         
             ResultSet Resul = PS.executeQuery();
             
@@ -154,27 +157,7 @@ public class DAO_Distribuidora {
                  
                   
              int retornar = comando.executeUpdate();
-             if (retornar > 0){
-                   return true;
-                }
-                
-                
-        } catch (SQLException ex) {
-            Logger.getLogger(DAO_Distribuidora.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
-        public boolean DELETARD(Modelo_Distribuidora DEDIS ){
-        try {
-            String SQL = "DELETE FROM eduardo_octavio.distribuidora WHERE codigo_distribuidora = ?";
-            Connection ConexaoLJBD = ConexaoBD.getConexao();
-              PreparedStatement comando = ConexaoLJBD.prepareStatement(SQL);
-             
-                 comando.setInt(1, DEDIS.getCodigoD());
-                 
-                  
-             int retornar = comando.executeUpdate();
-             if (retornar > 0){
+         if (retornar > 0){
                    return true;
                 }
                 

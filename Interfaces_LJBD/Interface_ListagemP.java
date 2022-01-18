@@ -36,6 +36,7 @@ public class Interface_ListagemP extends javax.swing.JFrame {
         jLista = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
         jButtonAJ = new javax.swing.JButton();
+        jButtonVD = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,11 @@ public class Interface_ListagemP extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Selecione o Produtor");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
+            }
+        });
 
         jButtonAJ.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonAJ.setText("Listar Produtor");
@@ -65,23 +71,32 @@ public class Interface_ListagemP extends javax.swing.JFrame {
             }
         });
 
+        jButtonVD.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jButtonVD.setText("Voltar");
+        jButtonVD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 41, Short.MAX_VALUE)
-                        .addComponent(jButtonAJ, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonAJ, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonVD, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +107,9 @@ public class Interface_ListagemP extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAJ)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonVD)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +155,15 @@ public class Interface_ListagemP extends javax.swing.JFrame {
         jLista.setModel(LMP2);
     }//GEN-LAST:event_jButtonAJActionPerformed
 
+    private void jButtonVDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVDActionPerformed
+      
+        this.dispose();
+    }//GEN-LAST:event_jButtonVDActionPerformed
+
+    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
+       jLabel7.setToolTipText("De 2 cliques em um produtor para atualiza-lo");
+    }//GEN-LAST:event_jLabel7MouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -175,6 +201,7 @@ public class Interface_ListagemP extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAJ;
+    private javax.swing.JButton jButtonVD;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JList<String> jLista;
     private javax.swing.JPanel jPanel1;

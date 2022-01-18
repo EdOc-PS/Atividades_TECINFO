@@ -4,8 +4,15 @@
  */
 package Interfaces_LJBD;
 
+import Conexao_LJBD.ConexaoBD;
 import DAO_LJBD.DAO_Produtor;
 import Modelo_LJBD.Modelo_Produtor;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,6 +36,7 @@ public class Interface_ConsultaP extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDD = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -43,6 +51,17 @@ public class Interface_ConsultaP extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jDD1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jCodigoPE = new javax.swing.JTextField();
+
+        jDD.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jDD.setText("Deletar");
+        jDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDDActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,11 +107,28 @@ public class Interface_ConsultaP extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 0, 8)); // NOI18N
         jLabel8.setText("*DD/MM/AAAA");
 
-        jButton1.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jDD1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jDD1.setText("Deletar");
+        jDD1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDD1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel4.setText("Codigo:");
+
+        jCodigoPE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCodigoPEActionPerformed(evt);
             }
         });
 
@@ -109,10 +145,6 @@ public class Interface_ConsultaP extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jButtonVP)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1))
                         .addComponent(jLabel19)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,8 +157,16 @@ public class Interface_ConsultaP extends javax.swing.JFrame {
                                 .addComponent(jTextDataIPE, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)))
                         .addComponent(jTextNomePE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextEmailPE)))
-                .addGap(35, 35, 35))
+                        .addComponent(jTextEmailPE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButtonVP, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jDD1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)))
+                        .addComponent(jLabel4)
+                        .addComponent(jCodigoPE, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,10 +194,16 @@ public class Interface_ConsultaP extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextEmailPE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCodigoPE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jDD1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVP)
                     .addComponent(jButton1))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,14 +213,14 @@ public class Interface_ConsultaP extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,11 +255,41 @@ public class Interface_ConsultaP extends javax.swing.JFrame {
             jTextDataIPE.setText(retornar.getDataiPE());
             jTextEmailPE.setText(retornar.getEmailPE());
             jTextNaciPE.setText(retornar.getNaciPE());
+            jCodigoPE.setText(String.valueOf(retornar.getCodigoPE()));
         }
         else{
             jLabel3.setText("PRODUTOR NÃO ENCORNTRADO!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDDActionPerformed
+  
+    }//GEN-LAST:event_jDDActionPerformed
+
+    private void jDD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDD1ActionPerformed
+
+        try {
+            String SQL = "DELETE FROM eduardo_octavio.produtor WHERE codigo_produtor = '" +  jCodigoPE.getText() + "'";
+            Connection ConexaoLJBD = ConexaoBD.getConexao();
+            PreparedStatement comando = ConexaoLJBD.prepareStatement(SQL);
+
+            int retornar = comando.executeUpdate();
+            if (retornar < 0){
+                JOptionPane.showMessageDialog(null, "O correu um erro ao deletar a conta do produtor");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "A conta do produtor foi apagada com suscesso");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Produtor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jDD1ActionPerformed
+
+    private void jCodigoPEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCodigoPEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCodigoPEActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,12 +329,16 @@ public class Interface_ConsultaP extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonVP;
+    public javax.swing.JTextField jCodigoPE;
+    private javax.swing.JButton jDD;
+    private javax.swing.JButton jDD1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextDataIPE;

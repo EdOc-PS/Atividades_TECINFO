@@ -16,14 +16,15 @@ public class Modelo_Jogo {
     private String generoJ;
     private String idiomasJ;
     private String reqJ;
-
-    public Modelo_Jogo(String nomeJ, double precoJ, String datalancJ, int faixaeJ, String generoJ, String reqJ) {
+    private int CodJ;
+    public Modelo_Jogo(String nomeJ, double precoJ, String datalancJ, int faixaeJ, String generoJ, String reqJ, int CodJ) {
         this.nomeJ = nomeJ;
         this.precoJ = precoJ;
         this.datalancJ = datalancJ;
         this.faixaeJ = faixaeJ;
         this.generoJ = generoJ;
         this.reqJ = reqJ;
+        this.CodJ = CodJ;
     }
 
     public Modelo_Jogo() {
@@ -33,6 +34,15 @@ public class Modelo_Jogo {
         this.faixaeJ = 0;
         this.generoJ = "";
         this.reqJ = "";
+        this.CodJ = 0;
+    }
+
+    public int getCodJ() {
+        return CodJ;
+    }
+
+    public void setCodJ(int CodJ) {
+        this.CodJ = CodJ;
     }
     
     public String getNomeJ() {
@@ -93,9 +103,8 @@ public class Modelo_Jogo {
 
     @Override
     public String toString() {
-        return "| " + nomeJ + " - " + precoJ + " - " + datalancJ + " - " + faixaeJ + " |";
-    }
-    
+        return "| "+ CodJ + " - " + nomeJ + " - " + precoJ + " - " + datalancJ + " - " + faixaeJ + " |";
+    }    
     
 }
 

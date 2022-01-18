@@ -7,6 +7,7 @@ package Interfaces_LJBD;
 import DAO_LJBD.DAO_Distribuidora;
 import Modelo_LJBD.Modelo_Distribuidora;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
         jTextNomeD.setText(paraD.getNomeD());
         jTextDataID.setText(paraD.getDataiD());
         jTextEmailD.setText(paraD.getEmailD());
+        jCodigoD.setText(String.valueOf(paraD.getCodigoD()));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,7 +52,8 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
         jButtonVD = new javax.swing.JButton();
         jButtonBD = new javax.swing.JButton();
         jButtonAtuU = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jCodigoD = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         jButtonAtu1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonAtu1.setText("Atualizar");
@@ -65,6 +68,7 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
             }
         });
 
+        jTextDataID = DD();
         jTextDataID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextDataIDActionPerformed(evt);
@@ -104,6 +108,11 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
 
         jButtonBD.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonBD.setText("Buscar");
+        jButtonBD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonBDMouseEntered(evt);
+            }
+        });
         jButtonBD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBDActionPerformed(evt);
@@ -112,13 +121,25 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
 
         jButtonAtuU.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonAtuU.setText("Listar");
+        jButtonAtuU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonAtuUMouseEntered(evt);
+            }
+        });
         jButtonAtuU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtuUActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Deletar");
+        jCodigoD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCodigoDActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel3.setText("Codigo:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -127,25 +148,31 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel9)
-                        .addComponent(jTextDataID, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextNomeD, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextEmailD, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonVD, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButtonBD, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonAtuU, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButtonCCD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextNomeD, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextEmailD, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jButtonVD)
+                            .addGap(70, 70, 70)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jButtonBD, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButtonAtuU, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel9)
+                                .addComponent(jTextDataID, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jCodigoD))))
                 .addGap(0, 23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -156,11 +183,17 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextNomeD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextDataID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jTextNomeD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextDataID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCodigoD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addGap(13, 13, 13)
@@ -172,12 +205,9 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonBD)
-                    .addComponent(jButtonAtuU))
-                .addGap(3, 3, 3)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonVD)
-                    .addComponent(jButton1))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(jButtonAtuU)
+                    .addComponent(jButtonVD))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -194,7 +224,7 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,7 +246,19 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+       public JTextField DD (){
+         try{
 
+             javax.swing.text.MaskFormatter data = new javax.swing.text.MaskFormatter("##/##/####");
+
+             return new javax.swing.JFormattedTextField(data);
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Ocorreu um erro");
+
+             return new JTextField();
+         }
+    }
     private void jTextNomeDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNomeDActionPerformed
@@ -232,12 +274,18 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
         InserirDistribuidora.setNomeD(jTextNomeD.getText());
         InserirDistribuidora.setDataiD(jTextDataID.getText());
         InserirDistribuidora.setEmailD(jTextEmailD.getText());
+        if(jCodigoD.getText().trim().equalsIgnoreCase("")){
+         InserirDistribuidora.setCodigoD(0);
+        }else{
+        InserirDistribuidora.setCodigoD(Integer.valueOf(jCodigoD.getText()));
+        }
+       
         
         DAO_Distribuidora DDAO = new DAO_Distribuidora();
         
         if(DDAO.ConsultaDI(String.valueOf(InserirDistribuidora.getCodigoD())) == null){
          if(DDAO.InserirDistribuidora(InserirDistribuidora)){
-             JOptionPane.showMessageDialog(null, "A conta do usuário " + InserirDistribuidora.getNomeD() + " foi criada com sucesso.");
+             JOptionPane.showMessageDialog(null, "A conta da distribuidora " + InserirDistribuidora.getNomeD() + " foi criada com sucesso.");
          }else{
               JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado ao criar a conta da distribuidora: " + InserirDistribuidora.getNomeD());
          }  
@@ -258,12 +306,25 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
     private void jButtonBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBDActionPerformed
       Interface_ConsultaD DistribuidoraC = new Interface_ConsultaD();
        DistribuidoraC.setVisible(true);
+        DistribuidoraC.jCodigoD.setEditable(false);
     }//GEN-LAST:event_jButtonBDActionPerformed
 
     private void jButtonAtuUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtuUActionPerformed
         Interface_ListagemD DistribuidoraLA = new Interface_ListagemD();
         DistribuidoraLA.setVisible(true);
     }//GEN-LAST:event_jButtonAtuUActionPerformed
+
+    private void jCodigoDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCodigoDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCodigoDActionPerformed
+
+    private void jButtonBDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBDMouseEntered
+        jButtonBD.setToolTipText("Clique aqui para buscar uma distribuidora ja cadastrada");
+    }//GEN-LAST:event_jButtonBDMouseEntered
+
+    private void jButtonAtuUMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtuUMouseEntered
+        jButtonAtuU.setToolTipText("Clique aqui para listar as distribuidoras cadastradas");
+    }//GEN-LAST:event_jButtonAtuUMouseEntered
 
     /**
      * @param args the command line arguments
@@ -302,13 +363,14 @@ public class Interface_Distribuidora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAtu1;
     private javax.swing.JButton jButtonAtuU;
     private javax.swing.JButton jButtonBD;
     private javax.swing.JButton jButtonCCD;
     private javax.swing.JButton jButtonVD;
+    public javax.swing.JTextField jCodigoD;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

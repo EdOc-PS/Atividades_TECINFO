@@ -4,8 +4,15 @@
  */
 package Interfaces_LJBD;
 
+import Conexao_LJBD.ConexaoBD;
 import DAO_LJBD.DAO_Usuario;
 import Modelo_LJBD.Modelo_Usuario;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,6 +52,7 @@ public class Interface_ConsultaU extends javax.swing.JFrame {
         jButtonVU = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jDD = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,7 +100,7 @@ public class Interface_ConsultaU extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +110,14 @@ public class Interface_ConsultaU extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
 
+        jDD.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jDD.setText("Deletar");
+        jDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,42 +126,41 @@ public class Interface_ConsultaU extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jText_emailU)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonVU)
-                                .addGap(196, 196, 196)
-                                .addComponent(jButton1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jText_nidentU, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jText_nidentU, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(0, 48, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonVU)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jDD, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)))
+                            .addComponent(jText_emailU, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jText_nicknameU, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jText_dataU)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(jLabel8))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jText_nomeU, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(23, 23, 23))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jText_dataU)))
+                            .addComponent(jText_nomeU, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(23, 23, 23))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,11 +191,13 @@ public class Interface_ConsultaU extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jText_emailU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(9, 9, 9)
+                .addComponent(jDD)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonVU)
-                    .addComponent(jButton1))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(jButton1)
+                    .addComponent(jButtonVU))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,8 +213,8 @@ public class Interface_ConsultaU extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -223,7 +240,7 @@ public class Interface_ConsultaU extends javax.swing.JFrame {
         UsuarioC.setDatanascU(jText_dataU.getText());
       
         UsuarioC.setNidentificacaoCPFU(jText_nidentU.getText());
-        UsuarioC.setEmailU(jText_emailU.getText());
+            UsuarioC.setEmailU(jText_emailU.getText());
 
         DAO_Usuario UDAO = new DAO_Usuario();
          Modelo_Usuario retornar = UDAO.ConsultaA(UsuarioC);
@@ -234,12 +251,35 @@ public class Interface_ConsultaU extends javax.swing.JFrame {
             jText_nicknameU.setText(retornar.getNicknameU());
             jText_dataU.setText(retornar.getDatanascU());        
             jText_nidentU.setText(retornar.getNidentificacaoCPFU());
-            jText_emailU.setText(retornar.getEmailU());              
+            jText_emailU.setText(retornar.getEmailU());   
+         
         }
         else{
             jLabel9.setText("USUARIO NÃO ENCORNTRADO!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDDActionPerformed
+
+        try {
+            String SQL = "DELETE FROM eduardo_octavio.usuario WHERE nidentificacaocpf = '" + jText_nidentU.getText() + "'";
+            Connection ConexaoLJBD = ConexaoBD.getConexao();
+              PreparedStatement comando = ConexaoLJBD.prepareStatement(SQL);
+                                                                
+                                
+             int retornar = comando.executeUpdate();
+             if (retornar < 0){
+                  JOptionPane.showMessageDialog(null, "O correu um erro ao deletar a conta do usuario");
+                }
+             else{
+                 JOptionPane.showMessageDialog(null, "A conta do usuario foi apagada com suscesso");
+             }
+                
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }//GEN-LAST:event_jDDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,6 +319,7 @@ public class Interface_ConsultaU extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonVU;
+    private javax.swing.JButton jDD;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -291,7 +332,7 @@ public class Interface_ConsultaU extends javax.swing.JFrame {
     private javax.swing.JTextField jText_dataU;
     private javax.swing.JTextField jText_emailU;
     private javax.swing.JTextField jText_nicknameU;
-    private javax.swing.JTextField jText_nidentU;
+    public javax.swing.JTextField jText_nidentU;
     private javax.swing.JTextField jText_nomeU;
     // End of variables declaration//GEN-END:variables
 }

@@ -36,6 +36,7 @@ public class Interface_ListagemD extends javax.swing.JFrame {
         jLista = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
         jButtonAJ = new javax.swing.JButton();
+        jButtonVD1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,12 +57,25 @@ public class Interface_ListagemD extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Selecione a Distribuidora");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
+            }
+        });
 
         jButtonAJ.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonAJ.setText("Listar Distribuidora");
         jButtonAJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAJActionPerformed(evt);
+            }
+        });
+
+        jButtonVD1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jButtonVD1.setText("Voltar");
+        jButtonVD1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVD1ActionPerformed(evt);
             }
         });
 
@@ -72,16 +86,17 @@ public class Interface_ListagemD extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 41, Short.MAX_VALUE)
-                        .addComponent(jButtonAJ, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonAJ, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(jButtonVD1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +107,9 @@ public class Interface_ListagemD extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAJ)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonVD1)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +155,14 @@ public class Interface_ListagemD extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jListaMouseClicked
 
+    private void jButtonVD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVD1ActionPerformed
+         this.dispose();
+    }//GEN-LAST:event_jButtonVD1ActionPerformed
+
+    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
+        jLabel7.setToolTipText("De 2 cliques em uma distribuidora para atualiza-la");
+    }//GEN-LAST:event_jLabel7MouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -175,6 +200,7 @@ public class Interface_ListagemD extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAJ;
+    private javax.swing.JButton jButtonVD1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JList<String> jLista;
     private javax.swing.JPanel jPanel1;

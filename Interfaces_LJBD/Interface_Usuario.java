@@ -5,6 +5,7 @@ package Interfaces_LJBD;
 import DAO_LJBD.DAO_Usuario;
 import Modelo_LJBD.Modelo_Usuario;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 /**
  *
  * @author eeuar
@@ -66,6 +67,7 @@ public class Interface_Usuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel2.setForeground(new java.awt.Color(204, 204, 255));
         jPanel2.setToolTipText("");
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -75,6 +77,9 @@ public class Interface_Usuario extends javax.swing.JFrame {
             }
         });
 
+        jText_nidentU = CPF();
+
+        jText_dataU = DD();
         jText_dataU.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jText_dataU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +129,11 @@ public class Interface_Usuario extends javax.swing.JFrame {
 
         jButtonAtuU.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonAtuU.setText("Listar");
+        jButtonAtuU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonAtuUMouseEntered(evt);
+            }
+        });
         jButtonAtuU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtuUActionPerformed(evt);
@@ -132,6 +142,11 @@ public class Interface_Usuario extends javax.swing.JFrame {
 
         jButtonBU.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonBU.setText("Buscar");
+        jButtonBU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonBUMouseEntered(evt);
+            }
+        });
         jButtonBU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBUActionPerformed(evt);
@@ -144,39 +159,38 @@ public class Interface_Usuario extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jText_nomeU)
-                    .addComponent(jText_emailU)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jText_naciU)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jText_nicknameU))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jText_nidentU)
-                            .addComponent(jText_dataU)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel8))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4))
-                                .addGap(0, 12, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButtonVU)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButtonBU, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonAtuU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButtonCCU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jText_nomeU)
+                        .addComponent(jText_emailU)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jText_naciU)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jText_nicknameU))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jText_nidentU)
+                                .addComponent(jText_dataU)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(jLabel8))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel4))
+                                    .addGap(0, 12, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jButtonVU)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonBU, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonAtuU, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButtonCCU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -225,9 +239,9 @@ public class Interface_Usuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +253,32 @@ public class Interface_Usuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public JTextField DD (){
+         try{
 
+             javax.swing.text.MaskFormatter cpf = new javax.swing.text.MaskFormatter("##/##/####");
+
+             return new javax.swing.JFormattedTextField(cpf);
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Ocorreu um erro");
+
+             return new JTextField();
+         }
+    }
+    public JTextField CPF (){
+         try{
+
+             javax.swing.text.MaskFormatter cpf = new javax.swing.text.MaskFormatter("###.###.###-##");
+
+             return new javax.swing.JFormattedTextField(cpf);
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Ocorreu um erro");
+
+             return new JTextField();
+         }
+    }
     private void jText_nomeUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_nomeUActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_nomeUActionPerformed
@@ -284,12 +323,21 @@ public class Interface_Usuario extends javax.swing.JFrame {
     private void jButtonBUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBUActionPerformed
         Interface_ConsultaU UsuarioC = new Interface_ConsultaU();
         UsuarioC.setVisible(true);
+        UsuarioC.jText_nidentU.setEditable(false);
     }//GEN-LAST:event_jButtonBUActionPerformed
 
     private void jButtonAtuUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtuUActionPerformed
        Interface_ListagemU UsuarioLA = new Interface_ListagemU();
         UsuarioLA.setVisible(true);
     }//GEN-LAST:event_jButtonAtuUActionPerformed
+
+    private void jButtonBUMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBUMouseEntered
+       jButtonBU.setToolTipText("Clique aqui para buscar usuarios ja cadastrados");
+    }//GEN-LAST:event_jButtonBUMouseEntered
+
+    private void jButtonAtuUMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtuUMouseEntered
+       jButtonAtuU.setToolTipText("Clique aqui para listar os usuarios cadastrados");
+    }//GEN-LAST:event_jButtonAtuUMouseEntered
 
     /**
      * @param args the command line arguments

@@ -3,6 +3,9 @@ package Interfaces_LJBD;
 
 import DAO_LJBD.DAO_Jogo;
 import Modelo_LJBD.Modelo_Jogo;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 
 /**
  *
@@ -25,7 +28,7 @@ public class Interface_Jogo extends javax.swing.JFrame {
          jTextIdiomasJ.setText(paraJ.getIdiomasJ());
          jTextRequisitosJ.setText(paraJ.getReqJ());
          jTextPrecoJ.setText(String.valueOf(paraJ.getPrecoJ()));
-         
+         jCodigoJ3.setText(String.valueOf(paraJ.getCodJ()));
          
     }
     /**
@@ -58,8 +61,10 @@ public class Interface_Jogo extends javax.swing.JFrame {
         jTextRequisitosJ = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
         jButtonVJ = new javax.swing.JButton();
-        jButtonAtuJ = new javax.swing.JButton();
         jButtonBJ = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
+        jCodigoJ3 = new javax.swing.JTextField();
+        jButtonAtuU = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +76,13 @@ public class Interface_Jogo extends javax.swing.JFrame {
             }
         });
 
+        jTextPrecoJ= DTCeT(20, " 1234567890.,");
+
+        jTextFaixaeJ = DTCeT(2, " 012345678");
+
+        jTextGeneroJ = DTCeT(30, " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZçÇéáíúóÁÉÓÍÚãõÃÕ");
+
+        jTextDataJ = DD();
         jTextDataJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextDataJActionPerformed(evt);
@@ -96,7 +108,7 @@ public class Interface_Jogo extends javax.swing.JFrame {
         jLabel6.setText("Idiomas:");
 
         jButtonAJ.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButtonAJ.setText("Adicionar Jogo");
+        jButtonAJ.setText("Adicionar Jogo/Atualizar");
         jButtonAJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAJActionPerformed(evt);
@@ -128,14 +140,32 @@ public class Interface_Jogo extends javax.swing.JFrame {
             }
         });
 
-        jButtonAtuJ.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButtonAtuJ.setText("Atualizar");
-
         jButtonBJ.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonBJ.setText("Buscar");
+        jButtonBJ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonBJMouseEntered(evt);
+            }
+        });
         jButtonBJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBJActionPerformed(evt);
+            }
+        });
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel33.setText("Codigo:");
+
+        jButtonAtuU.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jButtonAtuU.setText("Listar");
+        jButtonAtuU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonAtuUMouseEntered(evt);
+            }
+        });
+        jButtonAtuU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtuUActionPerformed(evt);
             }
         });
 
@@ -144,43 +174,43 @@ public class Interface_Jogo extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel8)
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel33)
+                        .addComponent(jTextNomeJ)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFaixaeJ)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextPrecoJ))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel4))
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jTextDataJ)
+                                .addComponent(jTextGeneroJ)))
+                        .addComponent(jScrollPane1)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButtonVJ)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                            .addComponent(jButtonBJ, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonAtuU, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextNomeJ, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFaixaeJ)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextPrecoJ))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel4))
-                                        .addGap(0, 12, Short.MAX_VALUE))
-                                    .addComponent(jTextDataJ)
-                                    .addComponent(jTextGeneroJ)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonVJ)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonAJ, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonBJ)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonAtuJ)))))
-                .addGap(0, 23, Short.MAX_VALUE))
+                            .addComponent(jCodigoJ3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButtonAJ, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,17 +243,21 @@ public class Interface_Jogo extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jLabel33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCodigoJ3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonAJ)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAtuJ)
                     .addComponent(jButtonBJ)
-                    .addComponent(jButtonVJ))
+                    .addComponent(jButtonVJ)
+                    .addComponent(jButtonAtuU))
                 .addGap(16, 16, 16))
         );
 
@@ -247,6 +281,35 @@ public class Interface_Jogo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+      public JTextField DTCeT(int Tam, String cara){
+        try{
+            String QT = "";
+                for (int i = 0; i < Tam; i++){
+                    QT = QT + "*";
+                }
+         javax.swing.text.MaskFormatter Area = new javax.swing.text.MaskFormatter(QT);
+            Area.setValidCharacters(cara);
+                return new javax.swing.JFormattedTextField(Area);                            
+        } 
+    
+        catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Houve um erro");
+                    return new  JTextField();
+        }
+    }
+      public JTextField DD (){
+         try{
+
+             javax.swing.text.MaskFormatter data = new javax.swing.text.MaskFormatter("##/##/####");
+
+             return new javax.swing.JFormattedTextField(data);
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Ocorreu um erro");
+
+             return new JTextField();
+         }
+    }
     private void jTextNomeJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeJActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNomeJActionPerformed
@@ -266,10 +329,28 @@ public class Interface_Jogo extends javax.swing.JFrame {
         InserirJogo.setGeneroJ(jTextGeneroJ.getText());
         InserirJogo.setIdiomasJ(jTextIdiomasJ.getText());
         InserirJogo.setReqJ(jTextRequisitosJ.getText());
+       
+        if(jCodigoJ3.getText().trim().equalsIgnoreCase("")){
+         InserirJogo.setCodJ(0);
+        }else{
+        InserirJogo.setCodJ(Integer.valueOf(jCodigoJ3.getText()));
+        }
+     
         
         DAO_Jogo JDAO = new DAO_Jogo();
-        JDAO.InserirJogo(InserirJogo);
-        
+        if (JDAO.ConsultaJO(String.valueOf(InserirJogo.getCodJ())) == null){
+            if(JDAO.InserirJogo(InserirJogo)){
+                 JOptionPane.showMessageDialog(null, "O Jogo " + InserirJogo.getNomeJ() + " foi inserido com sucesso no nosso sistema.");
+        }else{
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado ao tentar adicionar o Jogo " + InserirJogo.getNomeJ() + " no nosso sistema.");
+                }
+        }else{  
+           if(JDAO.ATUJ(InserirJogo)){
+                 JOptionPane.showMessageDialog(null, "Os dados do Jogo " + InserirJogo.getNomeJ() + " foram atualizados com sucesso.");
+        }else{
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado ao tentar atualizar o Jogo: " + InserirJogo.getNomeJ());
+                } 
+        }
     }//GEN-LAST:event_jButtonAJActionPerformed
 
     private void jButtonVJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVJActionPerformed
@@ -280,7 +361,21 @@ public class Interface_Jogo extends javax.swing.JFrame {
     private void jButtonBJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBJActionPerformed
         Interface_ConsultaJ JogoC = new Interface_ConsultaJ();
         JogoC.setVisible(true);
+        JogoC.jCodigoJ.setEditable(false);
     }//GEN-LAST:event_jButtonBJActionPerformed
+
+    private void jButtonAtuUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtuUActionPerformed
+        Interface_ListagemJ JogoLA = new Interface_ListagemJ();
+        JogoLA.setVisible(true);
+    }//GEN-LAST:event_jButtonAtuUActionPerformed
+
+    private void jButtonBJMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBJMouseEntered
+          jButtonBJ.setToolTipText("Clique aqui para buscar um jogo cadastrado");
+    }//GEN-LAST:event_jButtonBJMouseEntered
+
+    private void jButtonAtuUMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtuUMouseEntered
+            jButtonAtuU.setToolTipText("Clique aqui para listar os jogos cadastrados");
+    }//GEN-LAST:event_jButtonAtuUMouseEntered
 
     /**
      * @param args the command line arguments
@@ -320,12 +415,14 @@ public class Interface_Jogo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAJ;
-    private javax.swing.JButton jButtonAtuJ;
+    private javax.swing.JButton jButtonAtuU;
     private javax.swing.JButton jButtonBJ;
     private javax.swing.JButton jButtonVJ;
+    public javax.swing.JTextField jCodigoJ3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

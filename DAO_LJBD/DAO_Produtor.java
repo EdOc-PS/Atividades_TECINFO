@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 
 public class DAO_Produtor {
-    public void InserirProdutor (Modelo_Produtor PEBD){
+    public boolean InserirProdutor (Modelo_Produtor PEBD){
         try {
             String SQL = "INSERT INTO eduardo_octavio.produtor (email_produtor, nome_produtor, datainclu_produtor,"
                     + " nacionalidade_produtor) VALUES (?,?,?,?)";
@@ -33,15 +33,14 @@ public class DAO_Produtor {
                   
              int retornar = comando.executeUpdate();
                 if (retornar > 0){
-                    JOptionPane.showMessageDialog(null, "A conta do produtor " + PEBD.getNomePE() + " foi criada com sucesso.");
+                   return true;
                 }
-                else{
-                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado ao criar a conta do produtor: " + PEBD.getNomePE());
-                }
+               
                 
         } catch (SQLException ex) {
             Logger.getLogger(DAO_Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
     
   public List<Modelo_Produtor> LUCP(){
@@ -59,7 +58,7 @@ public class DAO_Produtor {
             }
             return ListaU;
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO_Produtor.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -77,7 +76,7 @@ public class DAO_Produtor {
         }
         return null;
     }
-    public Modelo_Produtor ConsultaD(String codigo_produtor){
+    public Modelo_Produtor ConsultaPE(String codigo_produtor){
         try {
             String SQL = "SELECT nome_produtor, datainclu_produtor, email_produtor, nacionalidade_produtor, codigo_produtor FROM eduardo_octavio.produtor WHERE codigo_produtor = ?";
             Connection ConexaoLJBD = ConexaoBD.getConexao();
@@ -151,4 +150,28 @@ public class DAO_Produtor {
         }
         return null;
     }
+      public boolean ATUPE(Modelo_Produtor DadosUA){
+        try {
+            String SQL = "UPDATE eduardo_octavio.produtor SET nome_produtor = ?, datainclu_produtor = ?, email_produtor = ?, nacionalidade_produtor = ? WHERE codigo_produtor = ?";
+            Connection ConexaoLJBD = ConexaoBD.getConexao();
+              PreparedStatement comando = ConexaoLJBD.prepareStatement(SQL);
+             
+             comando.setString(1, DadosUA.getNomePE());
+              comando.setString(2, DadosUA.getDataiPE());
+               comando.setString(3, DadosUA.getEmailPE());
+                comando.setString(4, DadosUA.getNaciPE());
+                  comando.setInt (5, DadosUA.getCodigoPE());
+                  
+             int retornar = comando.executeUpdate();
+             if (retornar > 0){
+                   return true;
+                }
+                
+                
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Produtor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
 }

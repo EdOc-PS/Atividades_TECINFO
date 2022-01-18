@@ -48,7 +48,7 @@ public class DAO_Usuario {
     }
     public List<Modelo_Usuario> LUC(){
         try {
-            String SQL = "SELECT nome_usuario, nickname_usuario, email_usuario, datanasc_usuario, nidentificacaocpf FROM eduardo_octavio.usuario";
+            String SQL = "SELECT nome_usuario, nickname_usuario, email_usuario, datanasc_usuario, nacionalidade_usuario, nidentificacaocpf FROM eduardo_octavio.usuario";
             List<Modelo_Usuario> ListaU = new ArrayList<Modelo_Usuario>();
             Connection ConexaoLJBD = ConexaoBD.getConexao();
             PreparedStatement PS = ConexaoLJBD.prepareStatement(SQL);
@@ -71,6 +71,7 @@ public class DAO_Usuario {
             MUA.setNomeU(Resul.getString("nome_usuario"));
             MUA.setNicknameU(Resul.getString("nickname_usuario"));
             MUA.setEmailU(Resul.getString("email_usuario"));
+            MUA.setNacionalidadeU(Resul.getString("nacionalidade_usuario"));
             MUA.setDatanascU(Resul.getString("datanasc_usuario"));
             MUA.setNidentificacaoCPFU(Resul.getString("nidentificacaocpf"));
             return MUA;
@@ -81,7 +82,7 @@ public class DAO_Usuario {
     }
     public Modelo_Usuario ConsultaA(Modelo_Usuario ADados){
         try {
-            String SQL = "SELECT nome_usuario, nickname_usuario, email_usuario, datanasc_usuario, nidentificacaocpf FROM eduardo_octavio.usuario";
+            String SQL = "SELECT nome_usuario, nickname_usuario, email_usuario, datanasc_usuario, nacionalidade_usuario, nidentificacaocpf FROM eduardo_octavio.usuario";
             Connection ConexaoLJBD = ConexaoBD.getConexao();
             String Filtro ="";
             
@@ -106,7 +107,7 @@ public class DAO_Usuario {
                     Filtro += " AND email_usuario ilike '%"+ADados.getEmailU()+"%'";
                 }
                 else{
-                Filtro = " WHEREemail_usuario ilike '%" + ADados.getEmailU() + "%'";
+                Filtro = " WHERE email_usuario ilike '%" + ADados.getEmailU() + "%'";
                 }
             } 
             
@@ -142,7 +143,7 @@ public class DAO_Usuario {
     }
     public Modelo_Usuario ConsultaUS(String nidentificacaocpf){
          try {
-            String SQL = "SELECT nidentificacaocpf, nome_usuario, nickname_usuario, email_usuario, datanasc_usuario FROM eduardo_octavio.usuario WHERE nidentificacaocpf = ?";
+            String SQL = "SELECT nidentificacaocpf, nome_usuario, nickname_usuario, email_usuario, datanasc_usuario, nacionalidade_usuario FROM eduardo_octavio.usuario WHERE nidentificacaocpf = ?";
             
             Connection ConexaoLJBD = ConexaoBD.getConexao();
             PreparedStatement PS = ConexaoLJBD.prepareStatement(SQL);
@@ -185,4 +186,5 @@ public class DAO_Usuario {
         }
         return false;
     }
+    
 }
