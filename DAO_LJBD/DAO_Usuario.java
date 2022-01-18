@@ -48,7 +48,7 @@ public class DAO_Usuario {
     }
     public List<Modelo_Usuario> LUC(){
         try {
-            String SQL = "SELECT nome_usuario, nickname_usuario, email_usuario, datanasc_usuario, nacionalidade_usuario, nidentificacaocpf FROM eduardo_octavio.usuario";
+            String SQL = "SELECT nome_usuario, nickname_usuario, email_usuario, datanasc_usuario, nacionalidade_usuario, nidentificacaocpf FROM eduardo_octavio.usuario ORDER BY nidentificacaocpf";
             List<Modelo_Usuario> ListaU = new ArrayList<Modelo_Usuario>();
             Connection ConexaoLJBD = ConexaoBD.getConexao();
             PreparedStatement PS = ConexaoLJBD.prepareStatement(SQL);

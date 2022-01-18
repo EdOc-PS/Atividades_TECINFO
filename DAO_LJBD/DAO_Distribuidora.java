@@ -44,7 +44,7 @@ public class DAO_Distribuidora {
 
    public List<Modelo_Distribuidora> LUCD(){
         try {
-            String SQL = "SELECT nome_distribuidora, datainclu_distribuidora, email_distribuidora, codigo_distribuidora FROM eduardo_octavio.distribuidora";
+            String SQL = "SELECT nome_distribuidora, datainclu_distribuidora, email_distribuidora, codigo_distribuidora FROM eduardo_octavio.distribuidora ORDER BY codigo_distribuidora";
             List<Modelo_Distribuidora> ListaU = new ArrayList<Modelo_Distribuidora>();
             Connection ConexaoLJBD = ConexaoBD.getConexao();
             PreparedStatement PS = ConexaoLJBD.prepareStatement(SQL);

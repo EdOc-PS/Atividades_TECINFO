@@ -46,7 +46,7 @@ public class DAO_Jogo {
     }
     public List<Modelo_Jogo> LUC(){
         try {
-            String SQL = "SELECT nome_jogo, requisitos_jogo, preco_jogo, temagenero_jogo, idioma_jogo, faixaeta_jogo, datalanc_jogo, codigo_jogo FROM eduardo_octavio.jogo";
+            String SQL = "SELECT nome_jogo, requisitos_jogo, preco_jogo, temagenero_jogo, idioma_jogo, faixaeta_jogo, datalanc_jogo, codigo_jogo FROM eduardo_octavio.jogo ORDER BY codigo_jogo";
             List<Modelo_Jogo> ListaJ = new ArrayList<Modelo_Jogo>();
             Connection ConexaoLJBD = ConexaoBD.getConexao();
             PreparedStatement PS = ConexaoLJBD.prepareStatement(SQL);

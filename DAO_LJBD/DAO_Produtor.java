@@ -45,7 +45,7 @@ public class DAO_Produtor {
     
   public List<Modelo_Produtor> LUCP(){
         try {
-            String SQL = "SELECT nome_produtor, datainclu_produtor, email_produtor, nacionalidade_produtor, codigo_produtor FROM eduardo_octavio.produtor";
+            String SQL = "SELECT nome_produtor, datainclu_produtor, email_produtor, nacionalidade_produtor, codigo_produtor FROM eduardo_octavio.produtor ORDER BY codigo_produtor";
             List<Modelo_Produtor> ListaU = new ArrayList<Modelo_Produtor>();
             Connection ConexaoLJBD = ConexaoBD.getConexao();
             PreparedStatement PS = ConexaoLJBD.prepareStatement(SQL);
