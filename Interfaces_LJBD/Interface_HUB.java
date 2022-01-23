@@ -201,6 +201,7 @@ public class Interface_HUB extends javax.swing.JFrame {
         Interface_Distribuidora distribuidora = new Interface_Distribuidora();
         distribuidora.setVisible(true);
         distribuidora.jCodigoD.setEditable(false);
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

@@ -274,11 +274,11 @@ public class Interface_ConsultaP extends javax.swing.JFrame {
             PreparedStatement comando = ConexaoLJBD.prepareStatement(SQL);
 
             int retornar = comando.executeUpdate();
-            if (retornar < 0){
-                JOptionPane.showMessageDialog(null, "O correu um erro ao deletar a conta do produtor");
+            if (retornar > 0){
+                JOptionPane.showMessageDialog(null, "A conta do produtor foi apagada com suscesso");
             }
             else{
-                JOptionPane.showMessageDialog(null, "A conta do produtor foi apagada com suscesso");
+                JOptionPane.showMessageDialog(null, " correu um erro ao deletar a conta do produtor");
             }
 
         } catch (SQLException ex) {
