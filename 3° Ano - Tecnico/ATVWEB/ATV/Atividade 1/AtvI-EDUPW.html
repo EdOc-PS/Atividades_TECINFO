@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="AtiStyle.css">
+    <title>Atividde</title>
+</head>
+
+<body>
+    <script>
+        var no;
+        var em;
+        function nom() {
+            no = prompt("Digite seu nome:")
+        }
+        function ema() {
+            em = prompt("Digite seu e-mail:")
+        }
+        function INTA() {
+            document.getElementById("ca").value += ("Nome: " + no + "\n");
+            document.getElementById("ca").value += ("E-mail:  " + em + "\n");
+
+        }
+        function lim() {
+            document.getElementById("ca").value = ("");
+
+        }
+    </script>
+
+    <center>
+
+        <div id="d1">   
+            <div id="d3"> 
+                <h1> Cadastro </h1>
+            </div> 
+        </div>
+
+        <div id="d2">
+            <br>
+            <button onclick="nom()"> Digitar Nome </button>
+            <button onclick="ema()"> Digitar E-mail </button>
+            <br><br>
+            <button onclick="INTA()"> Cadastrar </button>
+            <button onclick="lim()"> Limpar </button>
+            <br><br>
+            <textarea name="ca" id="ca" cols="42" rows="10"></textarea>
+            <br><br>
+        </div>
+    </center>
+
+</body>
+
+</html>

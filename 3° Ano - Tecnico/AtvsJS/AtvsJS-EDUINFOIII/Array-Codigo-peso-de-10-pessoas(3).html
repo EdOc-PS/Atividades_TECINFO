@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>codigo//peso-de-10-pessoas(3)</title>
+</head>
+<body>
+    <script>
+          let codigos = new Array();
+          let pesos = new Array();
+          let mep = 0, np = 0;
+
+          for (let e = 0; e < 10; e++) {
+                pesos[e] = parseInt(prompt("Informe o " + (e + 1) + "º peso: "));
+                codigos[e] = parseInt(prompt("Informe o " + (e + 1) + "º código: "));
+                mep = mep + pesos[e];
+            }
+           mep = mep/10.0;
+           document.write(" A media dos pesos é: " + mep + "<br>" );
+
+        for(let e = 0; e < 10; e++){
+          if(pesos[e] >= mep){
+              np++
+              document.write("Código da pessoa acima da média: " + codigos[e] + "<br>");
+          }  
+        }
+        document.write("Número de pessoas acima da média: " + np + "<br>"); 
+    </script>
+
+</body>
+</html>

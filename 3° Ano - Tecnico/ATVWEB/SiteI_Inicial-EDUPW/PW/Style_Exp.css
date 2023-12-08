@@ -1,0 +1,78 @@
+body {
+    background: rgb(58, 57, 57);
+}
+
+header{
+    background-color: rgb(21, 226, 130); 
+    color: white; 
+    padding: 10px;
+    border-radius: 15px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+a{
+    font-family:'Franklin Gothic Medium';
+    font-weight: 400;
+    color:white;
+    padding: 12px 16px;
+    border-radius: 10px;
+    text-decoration: none; 
+}
+#Links{
+    color: #444;
+    background-color: white;
+}
+
+#Links:hover {
+    text-decoration: none;
+    border: solid;
+    border-width: 2px;
+    font-weight: bold;
+}
+
+#logIF{
+    max-width:300px;
+    max-height:150px;
+    width: auto;
+    height: auto;
+}
+
+h1 {
+    font-family:'Franklin Gothic Medium';
+    font-weight: 400;
+    color: rgb(14, 248, 131);
+    text-align: center;
+    font-size: 90px;
+}
+
+#DIa{
+    display: inline-block;
+    font-size: 25px;
+    padding: 20px;
+    word-spacing: 50px;
+}
+#DIVb {
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: #000;
+    font-family:'Franklin Gothic Medium';
+    font-weight: 200;
+    border-radius: 1cm;
+    background-color: rgb(21, 226, 130);
+    color: rgb(247, 245, 245);
+    padding: 40px;
+    font-size: 40px;
+    text-align: center;
+}
+#ven{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 25cm;
+    max-height: 10cm;
+    width: auto;
+    height: auto;
+}

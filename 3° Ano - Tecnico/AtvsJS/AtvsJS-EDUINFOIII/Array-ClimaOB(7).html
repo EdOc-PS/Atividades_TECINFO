@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array-ClimaOB(7)</title>
+</head>
+
+<body>
+    <script>
+        let Dia = new Array();
+         let Temp = new Array();
+          let MTemp = 0, ndmenor = 0, mad, med, tma = 0, tme = 0;
+
+        for (let e = 0; e < 30; e++) {
+            Dia[e] = parseInt(prompt("Informe o  " + (e + 1) + " ° dia: "));
+             Temp[e] = parseInt(prompt("Informe a temperatura do" + (e + 1) + " ° dia: "));
+              MTemp = MTemp + Temp[e];
+        }
+        MTemp = MTemp / 30.0;
+        document.write("Temperatura média do mês: " + MTemp + "<br>");
+
+        for (let e = 0; e < 30; e++) {
+
+            if (Temp[e] < MTemp) {
+                ndmenor++;
+            }
+
+            if (Temp[e] >= MTemp) {
+                
+                 document.write("Dias em que a temperatura  foi maior que a média: Dia " + ndmaior + "<br>");
+            }
+
+            if (Temp[e] >= tma) {
+                tma = Temp[e];
+                 mad = Dia[e];
+            }
+        }
+        tme = tma;
+        for (let e = 0; e < 30; e++) {
+            if (Temp[e] <= tme) {
+                tme = Temp[e];
+                 med = Dia[e];
+            }
+        }
+        document.write("Quantidade de dias de temperatura menor que a média: " + ndmenor + "<br>");
+         document.write("Dia mais quente: " + mad + "<br>");
+          document.write("Dia mais frio:  " + med + "<br>");
+
+    </script>
+</body>
+
+</html>

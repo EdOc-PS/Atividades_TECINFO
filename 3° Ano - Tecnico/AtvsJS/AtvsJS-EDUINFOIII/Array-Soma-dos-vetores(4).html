@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Soma-dos-vetores(4)</title>
+</head>
+<body style="background-color:rgb(32, 32, 32); color: white;" >
+    <script>
+        let valores = new Array();
+        let valores2 = new Array();
+        let vf = new Array();
+
+         for(let e = 0; e < 10; e++){
+           valores[e] = parseInt(prompt("Informe os Valores: "));
+         }
+         for(let e = 0; e < 10; e++){
+            valores2[e] = parseInt(prompt(" Informe os segundos valores: "))
+            vf[e] = valores[e] + valores2[e];
+            document.write(vf[e] + "<br>");
+         }
+        
+    </script>
+</body>
+</html>

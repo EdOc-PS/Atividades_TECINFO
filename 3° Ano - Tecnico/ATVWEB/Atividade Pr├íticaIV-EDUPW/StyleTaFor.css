@@ -1,0 +1,42 @@
+.tabela1,td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    
+}
+table{
+    margin: auto;
+ 
+}
+.th1{
+    text-align: center;
+    padding: 5px;
+    background-color: aquamarine;
+    padding-right: 40px;
+}
+.Int{
+    text-align: start;
+    padding: 5px;      
+}
+.hora{
+    background-color: aquamarine;
+}
+
+.tabela2, .th3{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 7px;
+    
+
+}
+.td2{
+   
+    padding: 8px;
+}
+.tabela2{
+ width: 50%;
+}
+
+
+fieldset{
+    border-radius: 5px;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array-5-Valores(1)</title>
+</head>
+<body style="background-color:rgb(32, 32, 32); color: white;" >
+    <script>
+        let valores = new Array();
+        let vi = new Array();
+        
+
+         for(let e = 0; e < 5; e++){
+           valores[e] = parseInt(prompt("Informe o " + (e + 1) + " º Valor: "));
+           document.write(valores[e] + "<br>");
+         }
+
+         let e = 4;
+         for(let d = 0; d < 5; d++){
+            vi[d] = valores[e];
+            e--;
+            document.write(vi[d] + "<br>");
+        }
+       
+        
+     </script>
+</body>
+</html>

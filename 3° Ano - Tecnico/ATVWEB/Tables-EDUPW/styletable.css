@@ -1,0 +1,40 @@
+table, th,td {
+    border: 1px solid black;
+    border-radius: 4px; 
+}
+table{
+    margin: auto;
+}
+#titulo2{
+    background-color: silver;
+}
+th{
+    text-align: center;
+    padding: 15px;
+}
+#th1{
+    background-color: greenyellow;font-size: 27px;
+}
+#th2{
+    background-color:mediumslateblue
+}
+td{
+    padding: 15px;
+}
+div{
+    background-color: skyblue;
+    text-align: center;
+    border-radius: 20px;
+}
+.diva{
+    width:80pc;
+    margin: auto;
+}
+.divb{
+    width:65pc;
+    margin: auto;
+}
+
+.cor{
+    background-color:yellow;
+}

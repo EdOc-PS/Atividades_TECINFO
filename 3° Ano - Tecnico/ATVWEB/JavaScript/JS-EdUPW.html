@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="jvstyle.css">
+    <title>Tabuada</title>
+   
+
+</head>
+
+<body>
+    <script>
+        let stabu = "";
+        function adi() {
+
+            let num = parseInt(document.getElementById("numero").value);
+            for (let e = 1; e <= 10; e++) {
+                let som = num + e
+                stabu += "\n" + som + " = " + num + " + " + e ;
+
+            }
+            document.getElementById("tabu").value = stabu;
+        }
+        function sub() {
+            let num = parseInt(document.getElementById("numero").value);
+
+            for (let e = 1; e <= 10; e++) {
+                let sub = num - e
+                stabu +=  "\n" + sub + " = " + e + " - " + num ;
+
+            }
+            document.getElementById("tabu").value = stabu;
+        }
+        function mul() {
+            let num = parseInt(document.getElementById("numero").value);
+
+            for (let e = 1; e <= 10; e++) {
+                let mul = num * e
+                stabu +=  "\n" + mul + " = " + num + " * " + e ;
+            }
+            document.getElementById("tabu").value = stabu;
+        }
+        function divi() {
+            let num = parseInt(document.getElementById("numero").value);
+
+            for (let e = 1; e <= 10; e++) {
+                let divi = num / e
+                stabu += "\n" + divi + " = " + num + " / " + e ;
+            }
+            document.getElementById("tabu").value = stabu;
+        }
+    </script>
+
+    <div id="d2">
+        <br>
+
+        <div id="d">
+            <h1>Tabuada</h1>
+        </div>
+        
+        <div>
+            <p style="font-size: 20px;">Inforeme o valor: <br>
+                <input type="text" id="numero" required>
+                <br><br>
+                <button onclick="adi()"> Adição</button>
+                <button onclick="sub()"> Subitração</button>
+                <br><br>
+                <button onclick="mul()"> Multiplicação</button>
+                <button onclick="divi()"> Divisão</button>
+                <br><br>
+              
+        </div>
+        <br>
+        <div id="d3">
+            <br>
+            <textarea name="tabu" id="tabu" cols="30" rows="12"></textarea>
+            <br><br>
+            <button  type="reset">apagar</button> 
+            <br><br>
+        </div>
+        <br>
+    </div>
+</body>
+
+</html>

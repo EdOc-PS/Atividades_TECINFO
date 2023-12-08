@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array-Idade/CodigoMM(5)</title>
+</head>
+
+<body>
+    <script>
+        let codigos = new Array();
+        let idade = new Array();
+        let mei = 0, ni = 0, ima = 0, ime = 0, mac, mec;
+
+        for (let e = 0; e < 10; e++) {
+            idade[e] = parseInt(prompt("Informe a " + (e + 1) + "ª idade: "));
+            codigos[e] = parseInt(prompt("Informe o " + (e + 1) + "º código: "));
+            mei = mei + idade[e];
+        }
+        mei = mei / 10.0;
+
+        for (let e = 0; e < 10; e++) {
+            if (idade[e] >= mei) {
+                document.write("Codigo da pessoa com a idade maior que a média: " + codigos[e] + "<br>");
+            }
+            if (idade[e] >= ima) {
+                ima = idade[e];
+                mac = codigos[e];
+            }
+        }
+        ime = ima;
+        for (let e = 0; e < 10; e++) {
+            
+            if (idade[e] <= ime) {
+                ime = idade[e];
+                mec = codigos[e];
+            }
+        }
+       
+        document.write("Código da pessoa com maior idade: " + mac + "<br>");
+        document.write("Código da pessoa com menor idade: " + mec + "<br>");
+
+    </script>
+</body>
+
+</html>

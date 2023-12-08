@@ -1,0 +1,21 @@
+#d1{
+    background-color: greenyellow;
+    box-shadow: -6px 6px 3px rgba(10, 85, 56, 0.733);
+    border-radius: 15px;
+   
+}
+button{
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    box-shadow: -2px 6px 3px rgba(10, 85, 56, 0.733);
+}
+#d2{
+    background-color: greenyellow;
+    border-radius: 15px;
+}
+#d3{
+    background-color: hotpink;
+    width: 700px;
+    border-radius: 15px; 
+}

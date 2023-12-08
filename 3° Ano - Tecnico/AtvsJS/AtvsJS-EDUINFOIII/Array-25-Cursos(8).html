@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array-25-Cursos(8)</title>
+</head>
+
+<body>
+    <script>
+        let codigos = new Array();
+         let cursos = new Array();
+          let valor = new Array();
+           let valormaior = 0, valormenor = 0, media = 0, menorvcurso;
+
+        for (let lets = 0; lets < 25; lets++) {
+            codigos[lets] = parseInt(prompt("Informe o  codigo do " + (lets + 1) + " ° curso: "));
+             cursos[lets] = prompt("Informe o nome do " + (lets + 1) + " ° curso: ");
+              valor[lets] = parseFloat(prompt(" Informe o valor da mensalidade do curso de " + cursos[lets] + ": "));
+                media = media + valor[lets];
+            }
+
+        media = media / 25.0;   
+      
+        for (let p = 0; p < 25; p++) {
+            if (valor[p] >= valormaior) {
+                valormaior = valor[p];
+            }
+        }
+
+        valormenor = valormaior;
+        for (let p = 0; p < 25; p++) {
+            if (valor[p] <= valormenor) {
+                valormenor = valor[p];
+                  menorvcurso = cursos[p];
+            }
+        }
+        
+        media = media - valormenor;
+        document.write(" O curso com menor valor é o: " + menorvcurso + "<br>");
+        document.write(" A diferença entre a média e o menor valor de curso é de : " + media);
+
+    </script>
+</body>
+
+</html>
